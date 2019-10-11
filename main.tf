@@ -127,7 +127,7 @@ resource "aws_launch_template" "default" {
 resource "aws_autoscaling_group" "default" {
   count = var.enabled ? 1 : 0
 
-  name                      = "${aws_launch_template.default.name}-asg"
+  name                      = "${aws_launch_template.default.name[1]}-asg"
   #name_prefix = format("%s%s", module.label.id, var.delimiter)
   vpc_zone_identifier       = var.subnet_ids
   max_size                  = var.max_size
